@@ -1,0 +1,49 @@
+.logo-image {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.bg {
+  background-color: #0a0a0af2;
+  backdrop-filter: blur(24px);
+  border-bottom: solid 1px transparent;
+}
+.logo-txt {
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to right, white, #d4d4d4);
+}
+.logo-subTxt {
+  font-size: 12px;
+  color: #ff8904cc;
+}
+.btn-container {
+  background-color: #161616;
+  border: solid 1px #262626;
+  overflow: hidden;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.search-btn {
+  color: #737373;
+  border: solid 1px transparent;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+}
+.search-btn:hover {
+  color: #ff6900;
+  border: solid 1px #262626;
+}
+@media screen and (min-width: 992px) {
+  .btn-container {
+    background-color: #161616;
+    border: solid 1px #262626;
+    overflow: hidden;
+    border-radius: 50px;
+    width: auto;
+  }
+}
+.read-btn:hover{
+    transform: translateY(-3px);
+}
