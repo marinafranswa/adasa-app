@@ -8,11 +8,13 @@ export default function ArticleDetails() {
   const [Random, setRandom] = useState([]);
   async function getArticle() {
     try {
-      const { data } = await axios.get("/posts.json");
+      const { data } = await axios.get("posts.json");
       const RandomArts = data.posts.filter((element) => {
         return element.slug != slug;
       });
       setRandom(RandomArts);
+      console.log(RandomArts);
+      
     
 
       const filteredArt = data.posts.find((element) => {

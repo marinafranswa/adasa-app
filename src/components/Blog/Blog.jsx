@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Article from "../Article/Article";
 
+
 export default function Blog() {
   const [categories, setCategory] = useState([]);
   const [articles, setArticles] = useState([]);
