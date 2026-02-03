@@ -462,7 +462,7 @@ export default function ArticleDetails() {
             <div className="row">
               {Random.slice(0, 3).map((element) => {
                 return (
-                  <div className="col-6 col-lg-4" key={element.id}>
+                  <div className="col-12 col-lg-4" key={element.id}>
                     <Link
                       to={`/blog/${element.slug}`}
                       className="d-block text-decoration-none rounded-4 overflow-hidden border-all article-card"
