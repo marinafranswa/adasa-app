@@ -176,8 +176,7 @@ ul {
   color: #ff6900;
 }
 .sec-title {
-  font-size: 60px;
-  line-height: 1.25;
+  font-size: 30.16px;
 }
 .article-card {
   background-color: #161616;
@@ -511,10 +510,14 @@ footer .icon:hover {
     color: white !important;
     border-radius: 50px !important;
   }
-  .left-sec{
-  position: sticky;
-  top: 96px;
-}
+  .sec-title {
+    font-size: 60px;
+    line-height: 1.25;
+  }
+  .left-sec {
+    position: sticky;
+    top: 96px;
+  }
   .h-72 {
     height: 400px;
   }

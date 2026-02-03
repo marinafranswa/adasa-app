@@ -91,7 +91,7 @@ export default function Blog() {
         <div className="position-sticky search-sec">
           <div className="mx-auto p-4">
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
-              <div className="position-relative col-5">
+              <div className="position-relative col-12 col-md-5">
                 <input
                   onInput={search}
                   value={searchInput}
@@ -102,7 +102,7 @@ export default function Blog() {
                   className="col-12 px-2 py-3 rounded-4 border-all dark-bg1 fs-14 text-white"
                 />
               </div>
-              <div className="col-7 d-flex flex-wrap justify-content-center gap-2">
+              <div className="col-12 col-md-7 d-flex flex-wrap justify-content-center gap-2">
                 <button
                   className="px-3 py-2 fs-14 fw-medium rounded-4 border-all orng-btn"
                   onClick={resetBtn}

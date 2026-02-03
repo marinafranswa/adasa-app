@@ -100,7 +100,7 @@ export default function ArticleDetails() {
         </div>
         <div className="px-4 py-5">
           <div className="row py-5 g-5">
-            <div className="col-8 order-lg-1 order-2">
+            <div className="col-12 col-md-8 order-lg-1 order-2">
               <div className="grid-bg p-4 mb-3 rounded-4">
                 <p className="txt-light fst-italic mb-0 fs-5">
                   "{Article?.excerpt}"
@@ -287,7 +287,7 @@ export default function ArticleDetails() {
                 </div>
               </div>
             </div>
-            <div className="col-4 order-lg-2 order-1 scroll-mt">
+            <div className="col-12 col-md-4 order-lg-2 order-1 scroll-mt">
               <div className="left-sec">
                 <div className="p-4 dark-bg2 rounded-4 border-all mb-4">
                   <div className="d-flex align-items-center gap-3 mb-3">
