@@ -15,6 +15,8 @@ export default function Home() {
     try {
       const { data } = await axios.get("/posts.json");
       setArticles(data.posts);
+     
+      
    
       
       setCategory(data.categories);
@@ -224,10 +226,10 @@ export default function Home() {
             </p>
           </div>
           <div className="row gy-4 px-4 my-2">
-            {categories.map((category, i) => (
-              <div key={i} className="col-6 col-md-3">
+            {categories.map((category) => (
+              <div className="col-6 col-md-3" key={category.name}>
                 <Link
-                  to={`/blog/category`}
+                  to={`/blog/category/${category?.name}`}
                   className="category-card p-3 rounded-4 overflow-hidden position-relative text-decoration-none d-block"
                 >
                   <div className="inner position-absolute"></div>
@@ -236,9 +238,11 @@ export default function Home() {
                       <i className="fa-solid fa-sun txt-orange-500 fs-5"></i>
                     </div>
                     <h3 className="fw-bold fs-6 text-white mb-1">
-                      {category.name}
+                      {category?.name}
                     </h3>
-                    <p className="fs-14 txt-gray-500">{category.count} مقالة</p>
+                    <p className="fs-14 txt-gray-500">
+                      {category?.count} مقالة
+                    </p>
                     <div className="arrow position-absolute rounded-circle d-flex justify-items-center align-items-center rounded-circle ">
                       <i className="fa-solid fa-chevron-left text-white"></i>
                     </div>

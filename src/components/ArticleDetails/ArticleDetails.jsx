@@ -58,9 +58,12 @@ export default function ArticleDetails() {
           <div className="bottom-title position-absolute bottom-0 start-0 end-0 p-4 p-md-5">
             <div className="container">
               <div className="d-flex flex-wrap align-items-center gap-3 mb-3">
-                <button className=" orange-btn py-2 fs-14 fw-semibold">
+                <Link
+                  to={`/blog/category/${Article?.category}`}
+                  className="text-decoration-none orange-btn py-2 fs-14 fw-semibold"
+                >
                   {Article?.category}
-                </button>
+                </Link>
                 <div className="d-flex align-items-center gap-4 txt-light fs-14">
                   <span className="d-flex align-items-center gap-2">
                     <i className="fa-regular fa-calendar"></i>

@@ -1,30 +1,38 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Article from "../Article/Article";
+import { useParams } from "react-router-dom";
+
 
 
 export default function Blog() {
-  const [categories, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [articles, setArticles] = useState([]);
   let [i, setI] = useState(0);
   let [searchInput, setSearchInput] = useState("");
   const [viewStyle, setViewStyle] = useState("grid");
-  const [activeButton, setActiveButton] = useState("");
 
-  const filteredArticles = articles.filter((article) =>
-    article.category.includes(searchInput),
+  const { keyword } = useParams();
+  const [category, setCategory] = useState(
+    keyword === undefined ? "all" : keyword,
   );
+      const filteredPosts =
+        category === "all"
+          ? articles
+          : articles.filter((p) => p.category === category);
+
+  
+ useEffect(() => {
+   if (keyword) {
+     setCategory(keyword);
+   }
+ }, [keyword]);
+
 
   function search(e) {
     setSearchInput(e.target.value);
   }
- function searchBtn(e) {
-  setSearchInput(e.target.innerText);
-  setActiveButton(e.target.innerText);
- }
-  function resetBtn() {
-    setSearchInput("");
-  }
+
   function changeStyle(style) {
     setViewStyle(style)
   }
@@ -32,7 +40,7 @@ export default function Blog() {
   async function getData() {
     try {
       const { data } = await axios.get("/posts.json");
-      setCategory(data.categories);
+      setCategories(data.categories);
       setArticles(data.posts);
     } catch (error) {
       console.log(error);
@@ -102,26 +110,29 @@ export default function Blog() {
                   className="col-12 px-2 py-3 rounded-4 border-all dark-bg1 fs-14 text-white"
                 />
               </div>
-              <div className="col-12 col-md-7 d-flex flex-wrap justify-content-center gap-2">
-                <button
-                  className="px-3 py-2 fs-14 fw-medium rounded-4 border-all orng-btn"
-                  onClick={resetBtn}
-                >
-                  جميع المقالات
-                </button>
-                {categories.map((element, i) => (
-                  <button
-                    onClick={searchBtn}
-                    key={i}
-                    className={`px-3 py-2 fs-14 fw-medium rounded-4 ${
-                      activeButton === element.name
-                        ? "orange-btn"
-                        : "border-all dark-bg txt-light-400"
+              <div className="col-12 col-md-7">
+                <ul className="d-flex align-items-center gap-3 mb-3 list-unstyled cursor-pointer">
+                  <li
+                    className={`px-3 py-2 rounded-4  ${
+                      category === "all" ? "orange-btn " : "border-all dark-bg txt-light-400"
                     }`}
+                    onClick={() => setCategory("all")}
                   >
-                    {element.name}
-                  </button>
-                ))}
+                    الكل
+                  </li>
+
+                  {categories.map((c) => (
+                    <li
+                      key={c.name}
+                      className={`px-3 py-2 rounded-4 ${
+                        category === c.name ? "orange-btn " : "border-all dark-bg txt-light-400"
+                      }`}
+                      onClick={() => setCategory(c.name)}
+                    >
+                      {c.name}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -131,7 +142,7 @@ export default function Blog() {
             <p className="txt-light-400">
               عرض
               <span className="text-white fw-semibold mx-1">
-                {filteredArticles.length}
+                {filteredPosts.length}
               </span>
               مقالات
             </p>
@@ -162,7 +173,7 @@ export default function Blog() {
                 : "row-cols-1"
             }`}
           >
-            {filteredArticles.slice(i, i + 6).map((element) => {
+            {filteredPosts.slice(i, i + 6).map((element) => {
               return (
                 <Article
                   key={element.id}

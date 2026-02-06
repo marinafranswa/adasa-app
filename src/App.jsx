@@ -16,10 +16,17 @@ const Routers = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
       },
-      { path: "/blog/:slug", element: <ArticleDetails /> },
-      { path: "*", element: <NotFound /> },
+      {
+        path: "/blog/category/:keyword",
+        element: <Blog />,
+      },
+      {
+        path: "/blog/:slug",
+        element: <ArticleDetails />,
+      },
     ],
   },
+  { path: "*", element: <NotFound /> },
 ]);
 
 export default function App() {
